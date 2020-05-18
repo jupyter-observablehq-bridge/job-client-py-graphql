@@ -133,10 +133,13 @@ class ClientGraphqlWs:
     def _build_handler(self, channel, subscription_name, action, test):
         """
         """
+        # if not channel in self.store:
+        #     self.store[channel] = Store(channel, action=action)
+        # else:
+        #     self.store[channel].action = action
+
         if not channel in self.store:
-            self.store[channel] = Store(channel, action=action)
-        else:
-            self.store[channel].action = action
+            self.store[channel] = Store(channel)
 
         def handler(payload):
             try:
@@ -147,6 +150,9 @@ class ClientGraphqlWs:
 
             name = data.get('name')
             value = data.get('value')
+            if action:
+                action(channel, name, value)
+
             if test(name):
                 self.store[channel][name] = value
                 self.update.append((channel, name, value))

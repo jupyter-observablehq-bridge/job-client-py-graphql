@@ -446,7 +446,7 @@ class Client:
             id_providers = list(auth_data.keys())
             s = f'store updated with auth data from ID providers {id_providers}'
             self.out_alert.update(s, kind='text', append=True)
-            self.store.pop(self.alert)
+            
 
         self.ref_alert = self.subscribe(channel=self.alert, action=callback_alert)
         self.out_alert.display()
