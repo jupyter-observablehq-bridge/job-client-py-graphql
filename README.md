@@ -1,3 +1,3 @@
 # JOB Python GraphQL Client
 
-See [documentation](TBD).
+See [documentation](https://observablehq.com/@oscar6echo/jupyter-observablehq-bridge).
